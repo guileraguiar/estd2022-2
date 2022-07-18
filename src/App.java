@@ -3,27 +3,19 @@ import java.io.PrintWriter;
 
 public class App {
 
-    public static int[] criaVetorAleatorio(int tamanho) {
+    public static int[] average (int tamanho) {
         int vetor[] = new int[tamanho];
 
         for (int i = 0; i < tamanho; i++) {
-            vetor[i] = (int) (Math.random() * 100);
+            vetor[i] = (int) (Math.random() * tamanho);
         }
 
         return vetor;
     }
 
-    public static int[] criaVetorCrescente(int tamanho) {
-        int vetor[] = new int[tamanho];
 
-        for (int i = 0; i < tamanho; i++) {
-            vetor[i] = i;
-        }
 
-        return vetor;
-    }
-
-    public static int[] criaVetorDecrescente(int tamanho) {
+    public static int[] criaPiorCaso(int tamanho) {
         int vetor[] = new int[tamanho];
 
         for (int i = 0; i < tamanho; i++) {
@@ -57,7 +49,7 @@ public class App {
         System.out.println("BubbleSort1 - Array Decrescente");
         try (PrintWriter out = new PrintWriter("BubblePiorCaso.csv")) {
             for (int tamanhoVetor = 1; tamanhoVetor <= 1000; tamanhoVetor++) {
-                vetor = criaVetorDecrescente(tamanhoVetor);
+                vetor = criaPiorCaso(tamanhoVetor);
                 bubblesort1(vetor);
                 System.out.println("Tamanho: " + tamanhoVetor + " ;  Operacoes: " + count);
 
@@ -78,7 +70,7 @@ public class App {
                 somaOperacoes = 0;
 
                 for (int execucoes = 1; execucoes <= 10; execucoes++) {
-                    vetor = criaVetorAleatorio(tamanhoVetor);
+                    vetor = average (tamanhoVetor);
 
                     bubblesort1(vetor);
 
@@ -117,7 +109,7 @@ public class App {
         System.out.println("InsertionSort - Array Decrescente");
         try (PrintWriter out = new PrintWriter("InsertionPiorCaso.csv")) {
             for (int tamanhoVetor = 1; tamanhoVetor <= 1000; tamanhoVetor++) {
-                vetor = criaVetorDecrescente(tamanhoVetor);
+                vetor = criaPiorCaso(tamanhoVetor);
                 insertionsort(vetor);
                 System.out.println("Tamanho: " + tamanhoVetor + " ;  Operacoes: " + count);
 
@@ -139,7 +131,7 @@ public class App {
                 somaOperacoes = 0;
 
                 for (int execucoes = 1; execucoes <= 10; execucoes++) {
-                    vetor = criaVetorAleatorio(tamanhoVetor);
+                    vetor = average (tamanhoVetor);
                     insertionsort(vetor);
                     somaOperacoes += count;
                 }
@@ -198,7 +190,7 @@ public class App {
         System.out.println("HeapSort - Array Decrescente");
         try (PrintWriter out = new PrintWriter("HeapSortPiorCaso.csv")) {
             for (int tamanhoVetor = 1; tamanhoVetor <= 1000; tamanhoVetor++) {
-                vetor = criaVetorDecrescente(tamanhoVetor);
+                vetor = criaPiorCaso(tamanhoVetor);
                 heapsort(vetor);
                 System.out.println("Tamanho: " + tamanhoVetor + " ;  Operacoes: " + count);
                 out.println("Tamanho: " + tamanhoVetor + " ;  Operacoes: " + count);
@@ -218,7 +210,7 @@ public class App {
                 somaOperacoes = 0;
 
                 for (int execucoes = 1; execucoes <= 10; execucoes++) {
-                    vetor = criaVetorAleatorio(tamanhoVetor);
+                    vetor = average(tamanhoVetor);
                     heapsort(vetor);
                     somaOperacoes += count;
                 }
